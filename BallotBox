@@ -1,0 +1,46 @@
+"""Create a voting and counting system"""
+bjp = 0
+congress = 0
+tmc = 0
+total_vote = 0
+wr_in = 0
+while True:
+    choice = input("Do you want to vote? Ans in Simple y for yes, or n for no:- \n").lower()
+    if choice == "y":
+        vote = int(input("Please Enter 1 for BJP, 2 for CONGRESS, 3 for TMC to vote:- \n"))
+        if vote == 1:
+            bjp += 1
+            total_vote += 1
+        elif vote == 2:
+            congress += 1
+            total_vote += 1
+        elif vote == 3:
+            tmc += 1
+            total_vote += 1
+        else:
+            wr_in += 1
+            print("Wrong input")
+    elif choice == "n":
+        break
+total_vote = bjp + congress + tmc + wr_in
+print(f"Total {total_vote} nos people voted\n")
+print(f"Out of Which BJP got {bjp}nos of votes\n")
+print(f"Congress got {congress}nos of votes\n")
+print(f"TMC got {tmc}nos of votes\n")
+print(f"{wr_in} nos people wrongly pressed the voting button, so the vote is not counted\n")
+if total_vote == 0:
+    print("Election is cancelled\n")
+if bjp > congress and tmc:
+    print(f"So BJP win the race with {bjp} vote\n")
+elif congress > bjp and tmc:
+    print(f"So Congress win the race with {congress} votes\n")
+elif tmc > bjp and congress:
+    print(f"So Congress win the race with {congress} votes\n")
+elif bjp == congress and bjp > tmc:
+    print(f"So BJP and Congress ties and both wins the race with {congress} votes\n")
+elif bjp == tmc and bjp > congress:
+    print(f"So BJP and TMC ties and both wins the race with {bjp} votes\n")
+elif congress == tmc and tmc > bjp:
+    print(f"So Congress and TMC ties and both wins the race with {tmc} votes\n")
+elif bjp == congress == tmc and bjp != 0:
+    print("The election is tie")
